@@ -1,19 +1,19 @@
 
 
 # iterative approach
-def calculate_sum(n: int) -> int:
-    out = 0
-    for i in range(1, n+1):
-        out += i
-    return out
+# def calculate_sum(n: int) -> int:
+#     out = 0
+#     for i in range(1, n+1):
+#         out += i
+#     return out
 
 # recursive approach
-# def calculate_sum(n: int) -> int:
-#
-#     if n < 2:
-#         return n
-#     else:
-#         n + calculate_sum()
+def calculate_sum(n: int) -> int:
+
+    if n < 2:
+        return n
+    else:
+        return n + calculate_sum(n-1)
 
 
 if __name__ == "__main__":
