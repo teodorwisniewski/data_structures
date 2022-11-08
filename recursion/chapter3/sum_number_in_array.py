@@ -2,8 +2,8 @@
 
 def sum_array_numbers(numbers):
 
-    if len(numbers) == 1:
-        return numbers[0]
+    if len(numbers) == 0:
+        return 0
     else:
         head = numbers.pop(0)
         tail = numbers
