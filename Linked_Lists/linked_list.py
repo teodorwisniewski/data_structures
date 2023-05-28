@@ -32,7 +32,7 @@ class LinkedList:
         self.length += 1
         return True
     
-    # O(1)
+    # O(n)
     def pop(self):
         if self.head is None:
             return None
