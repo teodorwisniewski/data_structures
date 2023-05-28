@@ -14,7 +14,13 @@ class LinkedList:
         self.tail = new_node
         self.length = 1
 
+    def print_list(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.value)
+            temp = temp.next
+
 
 if __name__ == "__main__":
     linked_list = LinkedList(4)
-    print(linked_list.head.value)
+    linked_list.print_list()
