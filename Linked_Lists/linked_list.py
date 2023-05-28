@@ -6,6 +6,9 @@ class Node:
         self.value = value
         self.next = None
 
+    def __str__(self):
+        return f"node value {self.value} next={self.next}"
+
 
 class LinkedList:
     def __init__(self, value):
@@ -68,3 +71,7 @@ if __name__ == "__main__":
     popped_node = linked_list.pop()
     linked_list.print_list()
     print(f"popped node {popped_node.value}")
+    print(linked_list.pop())
+    print(linked_list.pop())
+    print(linked_list.pop())
+    print(linked_list.pop())
