@@ -31,6 +31,26 @@ class LinkedList:
             self.tail = new_node
         self.length += 1
         return True
+    
+    # O(1)
+    def pop(self):
+        if self.head is None:
+            return None
+        if self.head is self.tail:
+            self.head = None
+            self.tail = None
+        
+        node_to_check = self.head
+        while node_to_check.next is not self.tail:
+            print(f"iteratiing over to pop {node_to_check.value}")
+            node_to_check = node_to_check.next
+        node_to_pop = self.tail
+        self.tail = node_to_check
+        self.tail.next = None
+        return node_to_pop
+        
+
+
 
 
 if __name__ == "__main__":
@@ -40,3 +60,7 @@ if __name__ == "__main__":
     linked_list.append(22)
     linked_list.print_list()
     print('Length of the list',linked_list.length)
+
+    popped_node = linked_list.pop()
+    linked_list.print_list()
+    print(f"popped node {popped_node.value}")
