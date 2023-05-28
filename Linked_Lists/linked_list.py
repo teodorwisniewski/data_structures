@@ -20,7 +20,21 @@ class LinkedList:
             print(temp.value)
             temp = temp.next
 
+    # O(1)
+    def append(self, value):
+        new_node = Node(value)
+        if self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        
+        self.tail.next = new_node
+        self.tail = new_node
+
+
 
 if __name__ == "__main__":
     linked_list = LinkedList(4)
+    linked_list.append(6)
+    linked_list.append(11)
+    linked_list.append(22)
     linked_list.print_list()
