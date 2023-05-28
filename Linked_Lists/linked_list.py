@@ -40,6 +40,7 @@ class LinkedList:
             node_to_pop = self.head
             self.head = None
             self.tail = None
+            self.length = 0
             return node_to_pop
         
         node_to_check = self.head
@@ -49,6 +50,7 @@ class LinkedList:
         node_to_pop = self.tail
         self.tail = node_to_check
         self.tail.next = None
+        self.length -= 1
         return node_to_pop
         
 
