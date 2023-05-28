@@ -23,13 +23,14 @@ class LinkedList:
     # O(1)
     def append(self, value):
         new_node = Node(value)
-        if self.tail is None:
+        if self.head is None:
             self.head = new_node
             self.tail = new_node
-        
-        self.tail.next = new_node
-        self.tail = new_node
-
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+        self.length += 1
+        return True
 
 
 if __name__ == "__main__":
@@ -38,3 +39,4 @@ if __name__ == "__main__":
     linked_list.append(11)
     linked_list.append(22)
     linked_list.print_list()
+    print('Length of the list',linked_list.length)
