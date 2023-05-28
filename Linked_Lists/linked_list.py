@@ -37,8 +37,10 @@ class LinkedList:
         if self.head is None:
             return None
         if self.head is self.tail:
+            node_to_pop = self.head
             self.head = None
             self.tail = None
+            return node_to_pop
         
         node_to_check = self.head
         while node_to_check.next is not self.tail:
