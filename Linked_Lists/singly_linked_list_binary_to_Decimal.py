@@ -11,11 +11,21 @@
 #         return output
 
 
+# class Solution:
+#     def getDecimalValue(self, head: ListNode) -> int:
+#         output = 0
+#         while head is not None:
+#             output = output * 2 + head.val
+#             head = head.next
+
+#         return output
+
+
 class Solution:
     def getDecimalValue(self, head: ListNode) -> int:
-        output = 0
+        output = ''
         while head is not None:
-            output = output * 2 + head.val
+            output += str(head.val)
             head = head.next
 
-        return output
+        return int(output, 2)
