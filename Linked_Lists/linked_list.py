@@ -55,16 +55,18 @@ class LinkedList:
         self.tail.next = None
         self.length -= 1
         return node_to_pop
-        
+    
+    # O(1)    
     def prepend(self, value):
         new_node = Node(value)
         if self.length == 0:
             self.head = new_node
             self.tail = new_node
             self.length = 1
-            return 
+            return True
         new_node.next = self.head
         self.head = new_node
+        return True
 
 
 
