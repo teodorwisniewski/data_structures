@@ -80,6 +80,18 @@ class LinkedList:
         self.length -= 1
         return node_to_pop
     
+    # O(n)
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None    
+        temp_index = 0
+        temp = self.head
+        while temp is not None:
+            if temp_index == index:
+                return temp
+            temp_index += 1
+            temp = temp.next
+        
 
 if __name__ == "__main__":
     linked_list = LinkedList(4)
@@ -107,3 +119,10 @@ if __name__ == "__main__":
     print(linked_list.pop_first())
     print(linked_list.pop_first())
     print(linked_list.pop_first())
+    linked_list = LinkedList(4)
+    linked_list.append(6)
+    linked_list.append(11)
+    linked_list.append(22)
+    linked_list.print_list()
+    print("get linked list: ", linked_list.get(1))
+
