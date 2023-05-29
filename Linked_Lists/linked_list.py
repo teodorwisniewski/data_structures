@@ -84,13 +84,10 @@ class LinkedList:
     def get(self, index):
         if index < 0 or index >= self.length:
             return None    
-        temp_index = 0
         temp = self.head
-        while temp is not None:
-            if temp_index == index:
-                return temp
-            temp_index += 1
+        for _ in range(index):
             temp = temp.next
+        return temp
         
 
 if __name__ == "__main__":
@@ -124,5 +121,5 @@ if __name__ == "__main__":
     linked_list.append(11)
     linked_list.append(22)
     linked_list.print_list()
-    print("get linked list: ", linked_list.get(1))
+    print("get linked list: ", linked_list.get(0))
 
