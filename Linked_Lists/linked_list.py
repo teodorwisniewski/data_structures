@@ -90,11 +90,9 @@ class LinkedList:
         return temp
     
     def set_value(self, index, value):
-        if index < 0 or index >= self.length:
+        temp = self.get(index)
+        if temp is None:
             return None
-        temp = self.head
-        for _ in range(index):
-            temp = temp.next
         temp.value = value
         return True
         
