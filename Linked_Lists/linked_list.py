@@ -89,12 +89,13 @@ class LinkedList:
             temp = temp.next
         return temp
     
-    def set_value(self, index, value):
+    # O(n)
+    def set_value(self, index, value) -> bool:
         temp = self.get(index)
-        if temp is None:
-            return None
-        temp.value = value
-        return True
+        if temp:
+            temp.value = value
+            return True
+        return False
         
         
         
