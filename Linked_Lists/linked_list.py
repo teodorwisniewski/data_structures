@@ -88,8 +88,18 @@ class LinkedList:
         for _ in range(index):
             temp = temp.next
         return temp
+    
+    def set_value(self, index, value):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        temp.value = value
+        return True
         
-
+        
+        
 if __name__ == "__main__":
     linked_list = LinkedList(4)
     linked_list.append(6)
@@ -122,4 +132,7 @@ if __name__ == "__main__":
     linked_list.append(22)
     linked_list.print_list()
     print("get linked list: ", linked_list.get(0))
+    linked_list.set_value(3, -3)
+    linked_list.set_value(0, -5)
+    linked_list.print_list()
 
