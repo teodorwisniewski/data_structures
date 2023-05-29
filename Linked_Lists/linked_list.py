@@ -70,19 +70,14 @@ class LinkedList:
     
     # O(1)
     def pop_first(self) -> Node:
-        if self.length == 1:
-            node_to_pop = self.head
-            self.head = None
-            self.tail = None
-            self.length = 0
-            return node_to_pop
-        if self.head is None:
-            return
+        if self.length <= 1:
+            return self.pop()
         
         new_head = self.head.next
         self.head.next = None
         node_to_pop = self.head
         self.head = new_head
+        self.length -= 1
         return node_to_pop
     
 
@@ -109,3 +104,6 @@ if __name__ == "__main__":
     print(linked_list.pop_first())
     print(linked_list.pop_first())
     linked_list.print_list()   
+    print(linked_list.pop_first())
+    print(linked_list.pop_first())
+    print(linked_list.pop_first())
