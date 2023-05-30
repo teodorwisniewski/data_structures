@@ -98,7 +98,7 @@ class LinkedList:
         return False
     
     # O(n)
-    def insert(self, index, value):
+    def insert(self, index, value) -> None:
         if index < 0 or index > self.length:
             return False   
         if index == 0:
@@ -113,23 +113,21 @@ class LinkedList:
         return True
     
     # O(n)
-    def remove(self, index):
+    def remove(self, index) -> Node:
         print("Removing node at index: ", index)
-        if index < 0 or index > self.length:
-            return False  
+        if index < 0 or index >= self.length:
+            return None  
         if index == 0:
-            self.pop_first()
-            return True
+            return self.pop_first()
         if index == self.length-1:
-            self.pop()
-            return True
+            return self.pop()
         previous_node = self.get(index - 1)
         node_to_remove = previous_node.next
         next_node = node_to_remove.next
         node_to_remove.next = None
         previous_node.next = next_node
         self.length -= 1
-        return True
+        return node_to_remove
         
 
         
@@ -179,6 +177,6 @@ if __name__ == "__main__":
     linked_list.remove(1)
     linked_list.print_list()
     print("check remove functionality v2")
-    linked_list.remove(0)
-    linked_list.remove(3)
+    print(linked_list.remove(0))
+    print(linked_list.remove(3))
     linked_list.print_list()
