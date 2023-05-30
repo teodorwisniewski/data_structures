@@ -123,12 +123,25 @@ class LinkedList:
             return self.pop()
         previous_node = self.get(index - 1)
         node_to_remove = previous_node.next
-        next_node = node_to_remove.next
+        previous_node.next = node_to_remove.next
         node_to_remove.next = None
-        previous_node.next = next_node
         self.length -= 1
         return node_to_remove
-        
+    
+    # O(n)
+    def reverse(self):
+        if self.length <= 1:
+            return
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
 
         
         
@@ -179,4 +192,15 @@ if __name__ == "__main__":
     print("check remove functionality v2")
     print(linked_list.remove(0))
     print(linked_list.remove(3))
+    linked_list.print_list()
+    print("check reverse functionality")
+    linked_list.reverse()
+    linked_list.print_list()
+    print("check reverse functionality 2")
+    linked_list.insert(1, 1)
+    linked_list.insert(3, 3)
+    linked_list.insert(4, 4)
+    linked_list.print_list()
+    print("after reversiing")
+    linked_list.reverse()
     linked_list.print_list()
