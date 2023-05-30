@@ -105,9 +105,7 @@ class LinkedList:
             return self.prepend(value)
         if index == self.length:
             return self.append(value)
-        temp = self.head
-        for _ in range(index-1):
-            temp = temp.next
+        temp = self.get(index-1)
         new_node = Node(value)
         new_node.next = temp.next
         temp.next = new_node
