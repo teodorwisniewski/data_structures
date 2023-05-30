@@ -96,7 +96,24 @@ class LinkedList:
             temp.value = value
             return True
         return False
-        
+    
+    # O(n)
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False   
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        temp = self.head
+        for _ in range(index-1):
+            temp = temp.next
+        new_node = Node(value)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+        return True
+
         
         
 if __name__ == "__main__":
@@ -133,5 +150,10 @@ if __name__ == "__main__":
     print("get linked list: ", linked_list.get(0))
     linked_list.set_value(3, -3)
     linked_list.set_value(0, -5)
+    linked_list.print_list()
+    print("check inserting functionality")
+    linked_list.insert(1, 1)
+    linked_list.insert(3, 3)
+    linked_list.insert(6, 6)
     linked_list.print_list()
 
