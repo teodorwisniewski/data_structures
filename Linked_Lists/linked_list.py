@@ -111,6 +111,25 @@ class LinkedList:
         temp.next = new_node
         self.length += 1
         return True
+    
+    # O(n)
+    def remove(self, index):
+        if index < 0 or index > self.length:
+            return False  
+        if index == 0:
+            self.pop_first()
+            return True
+        if index == self.length-1:
+            self.pop()
+            return True
+        previous_node = self.get(index - 1)
+        node_to_remove = previous_node.next
+        next_node = node_to_remove.next
+        node_to_remove.next = None
+        previous_node.next = next_node
+        self.index -= 1
+        return True
+        
 
         
         
@@ -120,7 +139,7 @@ if __name__ == "__main__":
     linked_list.append(11)
     linked_list.append(22)
     linked_list.print_list()
-    print('Length of the list',linked_list.length)
+    print('Length of the list', linked_list.length)
 
     popped_node = linked_list.pop()
     linked_list.print_list()
@@ -154,4 +173,7 @@ if __name__ == "__main__":
     linked_list.insert(3, 3)
     linked_list.insert(6, 6)
     linked_list.print_list()
-
+    print("check remove functionality")
+    linked_list.remove(3)
+    linked_list.remove(1)
+    linked_list.print_list()
