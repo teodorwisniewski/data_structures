@@ -27,6 +27,7 @@ class DoublyLinkedList:
         self.length += 1
         return True
     
+    # O(1)
     def pop(self):
         if self.head is None:
             return None
@@ -34,11 +35,11 @@ class DoublyLinkedList:
         if self.head is self.tail:
             self.head = None
             self.tail = None
-            return self.head
-        new_tail = self.tail.prev
-        new_tail.next = None
-        self.tail.prev = None
-        self.tail = new_tail
+        else:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            self.tail.prev = None
+        self.length -= 1
         return node_to_pop
         
     def print_list(self):
