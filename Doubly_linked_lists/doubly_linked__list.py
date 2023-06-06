@@ -6,6 +6,9 @@ class Node:
         self.next = None
         self.prev = None
 
+    def __str__(self):
+        return f"value {self.value}"
+
 
 class DoublyLinkedList:
     def __init__(self, value):
@@ -37,13 +40,17 @@ class DoublyLinkedList:
             self.tail = None
         else:
             self.tail = self.tail.prev
+            node_to_pop.prev = None
             self.tail.next = None
-            self.tail.prev = None
+            
         self.length -= 1
         return node_to_pop
         
     def print_list(self):
         current_node = self.head
+        if self.head is None:
+            print("The DDL is empty")
+            return
         print(f'The head of the linked list is: ', current_node.value)
         while current_node.next is not None:
             current_node = current_node.next
@@ -57,5 +64,9 @@ if __name__ == '__main__':
     my_doubly_linked_list.append(4)
     my_doubly_linked_list.print_list()
     print("popping last node")
-    my_doubly_linked_list.pop()
+    print(my_doubly_linked_list.pop())
+    print(my_doubly_linked_list.pop())
+    print(my_doubly_linked_list.pop())
+    print(my_doubly_linked_list.pop())
+    print(my_doubly_linked_list.pop())
     my_doubly_linked_list.print_list()
