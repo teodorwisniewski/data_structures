@@ -51,7 +51,6 @@ class DoublyLinkedList:
         if self.head is None:
             self.head = new_node
             self.tail = new_node
-            self.length = 1
         else:
             second = self.head
             self.head = new_node
@@ -75,6 +74,20 @@ class DoublyLinkedList:
             node_to_pop.next = None      
         self.length -= 1
         return node_to_pop
+    
+    def get(self, index) -> Node:
+        if index > self.length or index < 0:
+            return None
+        middle_index = self.length / 2
+        if index < middle_index:
+            current_node = self.head
+            for _ in range(index):
+                current_node = current_node.next
+        else:
+            current_node = self.tail
+            for _ in range(self.length-1, index, -1):
+                current_node = current_node.prev
+        return current_node
         
     def print_list(self):
         current_node = self.head
@@ -99,6 +112,7 @@ if __name__ == '__main__':
     print(my_doubly_linked_list.pop())
     print(my_doubly_linked_list.pop())
     print(my_doubly_linked_list.pop())
+    print(f"my_doubly_linked_list length= {my_doubly_linked_list.length}")
     my_doubly_linked_list.print_list()
     print("prepend")
     print(my_doubly_linked_list.prepend(5))
@@ -106,6 +120,7 @@ if __name__ == '__main__':
     print(my_doubly_linked_list.prepend(3))
     print(my_doubly_linked_list.prepend(2))
     print(my_doubly_linked_list.prepend(1))
+    print(f"my_doubly_linked_list length= {my_doubly_linked_list.length}")
     my_doubly_linked_list.print_list()
 
     print("\n\n pop first")
@@ -116,4 +131,15 @@ if __name__ == '__main__':
     print(my_doubly_linked_list.pop_first())
     print(my_doubly_linked_list.pop_first())
     print(my_doubly_linked_list.pop_first())
+    my_doubly_linked_list.print_list()
+    print("\n\n get at index")
+    print(f"my_doubly_linked_list length= {my_doubly_linked_list.length}")
+    print(my_doubly_linked_list.prepend(3))
+    print(my_doubly_linked_list.prepend(2))
+    print(my_doubly_linked_list.prepend(1))
+    print(f"Getting node at index 0: {my_doubly_linked_list.get(0)}")
+    print(f"Getting node at index 1: {my_doubly_linked_list.get(1)}")
+    print(f"Getting node at index 2: {my_doubly_linked_list.get(2)}")
+    print(f"Getting node at index 5: {my_doubly_linked_list.get(5)}")
+    print(f"Getting node at index -5: {my_doubly_linked_list.get(5)}")
     my_doubly_linked_list.print_list()
