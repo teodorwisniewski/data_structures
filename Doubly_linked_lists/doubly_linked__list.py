@@ -26,6 +26,20 @@ class DoublyLinkedList:
         self.tail = new_node
         self.length += 1
         return True
+    
+    def pop(self):
+        if self.head is None:
+            return None
+        node_to_pop = self.tail
+        if self.head is self.tail:
+            self.head = None
+            self.tail = None
+            return self.head
+        new_tail = self.tail.prev
+        new_tail.next = None
+        self.tail.prev = None
+        self.tail = new_tail
+        return node_to_pop
         
     def print_list(self):
         current_node = self.head
@@ -39,4 +53,8 @@ if __name__ == '__main__':
     my_doubly_linked_list = DoublyLinkedList(7)
     my_doubly_linked_list.append(2)
     my_doubly_linked_list.append(1)
+    my_doubly_linked_list.append(4)
+    my_doubly_linked_list.print_list()
+    print("popping last node")
+    my_doubly_linked_list.pop()
     my_doubly_linked_list.print_list()
