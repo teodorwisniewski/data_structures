@@ -59,6 +59,22 @@ class DoublyLinkedList:
             second.prev = self.head
         self.length += 1
         return True
+    
+    # O(1)
+    def pop_first(self):
+        if self.head is None:
+            return None
+        node_to_pop = self.head
+        if self.head is self.tail:
+            self.head = None
+            self.tail = None
+        else:
+            new_head = self.head.next
+            self.head = new_head
+            self.head.prev = None
+            
+        node_to_pop.next = None
+        return node_to_pop
         
     def print_list(self):
         current_node = self.head
@@ -90,4 +106,13 @@ if __name__ == '__main__':
     print(my_doubly_linked_list.prepend(3))
     print(my_doubly_linked_list.prepend(2))
     print(my_doubly_linked_list.prepend(1))
+    my_doubly_linked_list.print_list()
+
+    print("\n\n pop first")
+    print(my_doubly_linked_list.pop_first())
+    print(my_doubly_linked_list.pop_first())
+    my_doubly_linked_list.print_list()
+    print(my_doubly_linked_list.pop_first())
+    print(my_doubly_linked_list.pop_first())
+    print(my_doubly_linked_list.pop_first())
     my_doubly_linked_list.print_list()
