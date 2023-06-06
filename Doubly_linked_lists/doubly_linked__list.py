@@ -72,8 +72,7 @@ class DoublyLinkedList:
             new_head = self.head.next
             self.head = new_head
             self.head.prev = None
-            
-        node_to_pop.next = None
+            node_to_pop.next = None      
         self.length -= 1
         return node_to_pop
         
@@ -113,6 +112,7 @@ if __name__ == '__main__':
     print(my_doubly_linked_list.pop_first())
     print(my_doubly_linked_list.pop_first())
     my_doubly_linked_list.print_list()
+    print(my_doubly_linked_list.pop_first())
     print(my_doubly_linked_list.pop_first())
     print(my_doubly_linked_list.pop_first())
     print(my_doubly_linked_list.pop_first())
