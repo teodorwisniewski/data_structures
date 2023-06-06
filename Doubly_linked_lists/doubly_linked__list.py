@@ -74,6 +74,7 @@ class DoublyLinkedList:
             self.head.prev = None
             
         node_to_pop.next = None
+        self.length -= 1
         return node_to_pop
         
     def print_list(self):
