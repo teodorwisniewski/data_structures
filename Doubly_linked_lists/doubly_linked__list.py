@@ -75,6 +75,7 @@ class DoublyLinkedList:
         self.length -= 1
         return node_to_pop
     
+    # O(n)
     def get(self, index) -> Node:
         if index > self.length or index < 0:
             return None
