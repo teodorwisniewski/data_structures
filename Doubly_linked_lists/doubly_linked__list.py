@@ -93,7 +93,26 @@ class DoublyLinkedList:
     def set_value(self, index, value):
         node_to_change = self.get(index)
         if node_to_change is not None:
-            node_to_change.value = value      
+            node_to_change.value = value 
+            return True
+        return False     
+    
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        new_node = Node(value)
+        before = self.get(index - 1)
+        node_to_move_forward = before.next
+        before.next = new_node
+        new_node.prev = before
+        new_node.next = node_to_move_forward
+        node_to_move_forward.prev = new_node
+        self.length += 1
+        return True
 
     def print_list(self):
         current_node = self.head
@@ -153,4 +172,9 @@ if __name__ == '__main__':
     my_doubly_linked_list.set_value(0, 10)
     my_doubly_linked_list.set_value(1, 20)
     my_doubly_linked_list.set_value(2, 30)
+    my_doubly_linked_list.print_list()
+    print("\n\n insert")
+    my_doubly_linked_list.insert(0, 0)
+    my_doubly_linked_list.insert(4, 4)
+    my_doubly_linked_list.insert(2, 222)
     my_doubly_linked_list.print_list()
