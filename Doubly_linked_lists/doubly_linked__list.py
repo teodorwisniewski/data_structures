@@ -89,7 +89,12 @@ class DoublyLinkedList:
             for _ in range(self.length-1, index, -1):
                 current_node = current_node.prev
         return current_node
-        
+
+    def set_value(self, index, value):
+        node_to_change = self.get(index)
+        if node_to_change is not None:
+            node_to_change.value = value      
+
     def print_list(self):
         current_node = self.head
         if self.head is None:
@@ -143,4 +148,9 @@ if __name__ == '__main__':
     print(f"Getting node at index 2: {my_doubly_linked_list.get(2)}")
     print(f"Getting node at index 5: {my_doubly_linked_list.get(5)}")
     print(f"Getting node at index -5: {my_doubly_linked_list.get(5)}")
+    my_doubly_linked_list.print_list()
+    print("\n\n set value")
+    my_doubly_linked_list.set_value(0, 10)
+    my_doubly_linked_list.set_value(1, 20)
+    my_doubly_linked_list.set_value(2, 30)
     my_doubly_linked_list.print_list()
