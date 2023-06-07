@@ -113,8 +113,27 @@ class DoublyLinkedList:
         node_to_move_forward.prev = new_node
         self.length += 1
         return True
+    
+    def remove(self, index) -> Node:
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        elif index == self.length - 1:
+            return self.pop()
+        else:
+            node_to_remove = self.get(index)
+            before = node_to_remove.prev
+            after = node_to_remove.next
+            before.next = after
+            after.prev = before
+            node_to_remove.prev = None
+            node_to_remove.next = None
+        self.length -= 1
+        return node_to_remove
 
     def print_list(self):
+        print("\n printing linked list")
         current_node = self.head
         if self.head is None:
             print("The DDL is empty")
@@ -177,4 +196,14 @@ if __name__ == '__main__':
     my_doubly_linked_list.insert(0, 0)
     my_doubly_linked_list.insert(4, 4)
     my_doubly_linked_list.insert(2, 222)
+    my_doubly_linked_list.print_list()
+    print("\n\n remove")
+    print("Just removign the following node", my_doubly_linked_list.remove(0))
+    my_doubly_linked_list.print_list()
+    print("\n remove node at index 2")
+    print("Just removign the following node", my_doubly_linked_list.remove(2))
+    my_doubly_linked_list.print_list()
+    print("\n remove node at index 3")
+    print("Just removign the following node", my_doubly_linked_list.remove(3))
+ 
     my_doubly_linked_list.print_list()
