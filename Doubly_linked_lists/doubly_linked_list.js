@@ -15,6 +15,26 @@ class DoublyLinkedList {
         this.tail = newNode;
         this.length = 1;
     }
+
+    push(value){
+        const new_node = new Node(value);
+        if (!this.head){
+            this.head = new_node;
+            this.tail = new_node;
+        } else if (this.head === this.tail){
+            this.head.next = new_node;
+            this.tail = new_node;
+            this.tail.prev = this.head;
+        } else{
+            this.tail.next = new_node;
+            new_node.prev = this.tail;
+            this.tail = new_node;
+
+        }
+        this.length++;
+        return this
+
+    }
 }
 
 
