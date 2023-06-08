@@ -33,6 +33,20 @@ class DoublyLinkedList {
         }
         this.length++;
         return this
+    }
+
+    printList() {
+        console.log("\n Printing linked list");
+        let currentNode = this.head;
+        if (this.head === null) {
+            console.log("The DDL is empty");
+            return;
+        }
+        console.log('The head of the linked list is: ', currentNode.value);
+        while (currentNode.next !== null){
+            currentNode = currentNode.next;
+            console.log(currentNode.value)
+        }
 
     }
 }
@@ -47,9 +61,10 @@ class DoublyLinkedList {
 
 
 let myDoublyLinkedList = new DoublyLinkedList(7);
-myDoublyLinkedList.append(2);
-myDoublyLinkedList.append(1);
-myDoublyLinkedList.append(4);
+console.log("pushing new nodes to the linked list");
+myDoublyLinkedList.push(2);
+myDoublyLinkedList.push(1);
+myDoublyLinkedList.push(4);
 myDoublyLinkedList.printList();
 console.log("popping last node");
 console.log(myDoublyLinkedList.pop());
