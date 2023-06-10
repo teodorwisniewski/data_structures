@@ -54,6 +54,33 @@ class SinglyLinkedList {
         return nodeToPop;
     }
 
+    unshift(value) {
+        if(!this.head){
+            return this.push(value);
+        }
+        let newHead = new Node(value);
+        newHead.next = this.head;
+        this.head = newHead;
+        this.length++;
+        return this
+    }
+
+    // pop first
+    shift() {
+
+        if(!this.head){
+            return;
+        }
+
+        let newHead = this.head.next;
+        let nodeToRemove = this.head;
+        console.log(`shift head to pop ${nodeToRemove.value} newHead: ${String(newHead)} `);
+        this.head = newHead;
+        nodeToRemove.next = null;
+        this.length--;
+        return nodeToRemove   
+    }
+
 
     printList(){
         console.log("Printing all nodes in the sigly linked list");
@@ -90,4 +117,16 @@ console.log(`Popping the fillowing node: ${linkedList.pop().value} `);
 console.log(`Popping the fillowing node: ${linkedList.pop().value} `);
 console.log(`Popping the fillowing node: ${linkedList.pop().value} `);
 console.log(`Popping the fillowing node: ${linkedList.pop()} `);
+linkedList.printList();
+
+console.log("\n unshift = prepend nodes to the list \n");
+linkedList.unshift(9999).unshift(888).unshift(55).unshift(1);
+linkedList.printList();
+
+console.log("\n shift = pop first nodes to the list \n");
+linkedList.shift();
+linkedList.shift();
+linkedList.shift();
+linkedList.shift();
+linkedList.shift();
 linkedList.printList();
