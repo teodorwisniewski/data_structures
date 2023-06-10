@@ -69,15 +69,17 @@ class SinglyLinkedList {
     shift() {
 
         if(!this.head){
-            return;
+            return undefined;
         }
 
         let newHead = this.head.next;
         let nodeToRemove = this.head;
-        console.log(`shift head to pop ${nodeToRemove.value} newHead: ${String(newHead)} `);
         this.head = newHead;
         nodeToRemove.next = null;
         this.length--;
+        if (this.length === 0){
+            this.tail = null;
+        }
         return nodeToRemove   
     }
 
@@ -125,8 +127,10 @@ linkedList.printList();
 
 console.log("\n shift = pop first nodes to the list \n");
 linkedList.shift();
+linkedList.printList();
 linkedList.shift();
 linkedList.shift();
+linkedList.printList();
 linkedList.shift();
 linkedList.shift();
 linkedList.printList();
