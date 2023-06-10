@@ -32,6 +32,29 @@ class SinglyLinkedList {
         return this
     }
 
+    pop() {
+        let nodeToPop;
+        if(!this.head){
+            return;
+        } else if(this.head === this.tail){
+            nodeToPop = this.head;
+            this.head = null;
+            this.tail = null;
+        } else{
+            let currentNode = this.head;
+            while (currentNode.next !== this.tail){
+                currentNode = currentNode.next;
+            }
+            nodeToPop = this.tail;
+            this.tail = currentNode;
+            this.tail.next = null;
+        }
+
+        this.length--;
+        return nodeToPop;
+    }
+
+
     printList(){
         console.log("Printing all nodes in the sigly linked list");
         if (!this.head){
@@ -46,8 +69,10 @@ class SinglyLinkedList {
             console.log(`The node value is ${currentNode.value}`);
         }
         
+    }
 
-
+    toString(){
+        return String(this.value);
     }
 
 
@@ -57,4 +82,12 @@ class SinglyLinkedList {
 console.log("\n\n\n Constructing a new sigly linked list \n")
 let linkedList = new SinglyLinkedList(4);
 linkedList.push(6).push(11).push(230);
+linkedList.printList();
+
+console.log("\n popping nodes from the list \n")
+console.log(`Popping the fillowing node: ${linkedList.pop().value} `);
+console.log(`Popping the fillowing node: ${linkedList.pop().value} `);
+console.log(`Popping the fillowing node: ${linkedList.pop().value} `);
+console.log(`Popping the fillowing node: ${linkedList.pop().value} `);
+console.log(`Popping the fillowing node: ${linkedList.pop()} `);
 linkedList.printList();
