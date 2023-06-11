@@ -83,6 +83,22 @@ class SinglyLinkedList {
         return nodeToRemove   
     }
 
+    get(index){
+        if(!this.head || index< 0){
+            return undefined;
+        }
+        let nodeToReturn = this.head;
+        for (let i=0; i<index; i++){
+            nodeToReturn = nodeToReturn.next;
+        }
+        return nodeToReturn;
+
+    }
+
+    set(index, value) {
+
+    }
+
 
     printList(){
         console.log("Printing all nodes in the sigly linked list");
@@ -133,4 +149,13 @@ linkedList.shift();
 linkedList.printList();
 linkedList.shift();
 linkedList.shift();
+linkedList.printList();
+
+console.log("\n get = get nodes from the list \n");
+linkedList.push(1).push(6).push(11).push(230);
+console.log(`GEtting the fillowing node: ${linkedList.get(0).value} `);
+console.log(`GEtting the fillowing node: ${linkedList.get(1).value} `);
+console.log(`GEtting the fillowing node: ${linkedList.get(3).value} `);
+console.log(`GEtting the fillowing node: ${linkedList.get(4)} `);
+console.log(`GEtting the fillowing node: ${linkedList.get(-3)} `);
 linkedList.printList();
