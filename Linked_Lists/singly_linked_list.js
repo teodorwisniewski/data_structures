@@ -84,7 +84,7 @@ class SinglyLinkedList {
     }
 
     get(index){
-        if(!this.head || index< 0){
+        if(index >= this.length || index< 0){
             return undefined;
         }
         let nodeToReturn = this.head;
@@ -92,11 +92,17 @@ class SinglyLinkedList {
             nodeToReturn = nodeToReturn.next;
         }
         return nodeToReturn;
-
     }
 
     set(index, value) {
 
+        let nodeToModify = this.get(index);
+        if (nodeToModify){
+            nodeToModify.value = value;
+            return true;
+        }
+        return false;
+        
     }
 
 
@@ -159,3 +165,14 @@ console.log(`GEtting the fillowing node: ${linkedList.get(3).value} `);
 console.log(`GEtting the fillowing node: ${linkedList.get(4)} `);
 console.log(`GEtting the fillowing node: ${linkedList.get(-3)} `);
 linkedList.printList();
+
+
+console.log("\n set = set nodes from the list \n");
+linkedList.set(0, 0);
+linkedList.set(1, 100);
+linkedList.set(2, 2000);
+linkedList.set(3, 30000);
+linkedList.set(4, 4423);
+linkedList.set(-3, 435);
+linkedList.printList();
+
