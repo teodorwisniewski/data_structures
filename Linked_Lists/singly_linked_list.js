@@ -105,6 +105,24 @@ class SinglyLinkedList {
         
     }
 
+    insert(index, value) {
+        if (index < 0 || index > this.length){
+            return false;
+        }
+        if (index === 0 ){
+            return this.unshift(value);
+        }
+        if (index === this.length){
+            return this.push(value);
+        }
+        let newNode = new Node(value);
+        let prev = this.get(index-1);
+        newNode.next = prev.next;
+        prev.next = newNode;
+        this.length++;
+        return true;
+    }
+
 
     printList(){
         console.log("Printing all nodes in the sigly linked list");
@@ -174,5 +192,15 @@ linkedList.set(2, 2000);
 linkedList.set(3, 30000);
 linkedList.set(4, 4423);
 linkedList.set(-3, 435);
+linkedList.printList();
+
+
+console.log("\n insert nodes from the list \n");
+linkedList.insert(0, 0.00001);
+linkedList.insert(1, 101);
+linkedList.insert(2, 2002);
+linkedList.insert(4, 404);
+linkedList.insert(8, 808);
+linkedList.insert(10, 2002);
 linkedList.printList();
 
