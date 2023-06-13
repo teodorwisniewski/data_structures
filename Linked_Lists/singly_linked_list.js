@@ -123,6 +123,22 @@ class SinglyLinkedList {
         return true;
     }
 
+    remove(index){
+        if (index<0 || index >= this.length){
+            return undefined;
+        } else if (index === 0) {
+            return this.shift();
+        } else if (index === this.length-1) {
+            return this.pop();
+        } 
+        let before  = this.get(index-1);
+        let nodeToRemove = before.next;
+        before.next = nodeToRemove.next;
+        nodeToRemove.next = null;
+        this.length--;
+        return nodeToRemove;
+    }
+
 
     printList(){
         console.log("Printing all nodes in the sigly linked list");
@@ -202,5 +218,15 @@ linkedList.insert(2, 2002);
 linkedList.insert(4, 404);
 linkedList.insert(8, 808);
 linkedList.insert(10, 2002);
+linkedList.printList();
+
+
+console.log("\n remove nodes from the list \n");
+console.log(`remove the fillowing node: ${linkedList.remove(0).value} `);
+console.log(`remove the fillowing node: ${linkedList.remove(8)} `);
+console.log(`remove the fillowing node: ${linkedList.remove(7).value} `);
+console.log(`remove the fillowing node: ${linkedList.remove(2).value} `);
+console.log(`remove the fillowing node: ${linkedList.remove(4).value} `);
+
 linkedList.printList();
 
