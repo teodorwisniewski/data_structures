@@ -139,6 +139,25 @@ class SinglyLinkedList {
         return nodeToRemove;
     }
 
+    reverse(){
+        if (this.length<2){
+            return this;
+        }
+        let currentNode = this.head;
+        this.head = this.tail;
+        this.tail = currentNode;
+        let before = null;
+        let following = null;
+
+        while (currentNode !== null){
+            following = currentNode.next;
+            currentNode.next = before;
+            before = currentNode;
+            currentNode = following;
+        }
+       return this
+    }
+
 
     printList(){
         console.log("Printing all nodes in the sigly linked list");
@@ -227,6 +246,12 @@ console.log(`remove the fillowing node: ${linkedList.remove(8)} `);
 console.log(`remove the fillowing node: ${linkedList.remove(7).value} `);
 console.log(`remove the fillowing node: ${linkedList.remove(2).value} `);
 console.log(`remove the fillowing node: ${linkedList.remove(4).value} `);
-
+console.log(`remove the fillowing node: ${linkedList.remove(3).value} `);
+linkedList.set(2, 303);
+linkedList.set(3, 404);
 linkedList.printList();
 
+
+console.log("\n reversing the list \n");
+linkedList.reverse();
+linkedList.printList();
