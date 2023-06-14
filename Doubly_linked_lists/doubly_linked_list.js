@@ -36,16 +36,12 @@ class DoublyLinkedList {
     }
 
     pop() {
-       let nodeToPop = this.head;
+       let nodeToPop = this.tail;
        if (this.length === 1){
             this.head = null;
             this.tail = null;
         } else if(this.length > 1){
-            let prev = null;
-            while (nodeToPop.next !== null){
-                prev = nodeToPop;
-                nodeToPop = nodeToPop.next
-            }
+            let prev = this.tail.prev;
             prev.next = null;
             nodeToPop.prev = null
             this.tail = prev;
