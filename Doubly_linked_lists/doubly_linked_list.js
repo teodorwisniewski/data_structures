@@ -32,7 +32,7 @@ class DoublyLinkedList {
 
         }
         this.length++;
-        return this
+        return this;
     }
 
     pop() {
@@ -50,7 +50,19 @@ class DoublyLinkedList {
             this.tail = prev;
         }
         this.length--;
-        return nodeToPop
+        return nodeToPop;
+    }
+
+    // prepend
+    unshift(value){
+        if (!this.head){
+            return this.push(value)
+        }
+        let newNode = new Node(value);
+        newNode.next = this.head;
+        this.head.prev = newNode;
+        this.head = newNode;
+        return this;
     }
 
     printList() {
@@ -84,9 +96,9 @@ console.log(`Popping the fillowing node: ${doublyLinkedList.pop().value} `);
 console.log(`Popping the fillowing node: ${doublyLinkedList.pop()} `);
 doublyLinkedList.printList();
 
-// console.log("\n unshift = prepend nodes to the list \n");
-// doublyLinkedList.unshift(9999).unshift(888).unshift(55).unshift(1);
-// doublyLinkedList.printList();
+console.log("\n unshift = prepend nodes to the list \n");
+doublyLinkedList.unshift(9999).unshift(888).unshift(55).unshift(1);
+doublyLinkedList.printList();
 
 // console.log("\n shift = pop first nodes to the list \n");
 // doublyLinkedList.shift();
