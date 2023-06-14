@@ -36,6 +36,9 @@ class DoublyLinkedList {
     }
 
     pop() {
+        if (!this.head){
+            return undefined
+        }
        let nodeToPop = this.tail;
        if (this.length === 1){
             this.head = null;
@@ -46,10 +49,7 @@ class DoublyLinkedList {
             nodeToPop.prev = null
             this.tail = prev;
         }
-        if (this.length>0){
-            this.length--;
-        }
-        
+        this.length--;
         return nodeToPop
     }
 
