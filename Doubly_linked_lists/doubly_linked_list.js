@@ -100,7 +100,7 @@ class DoublyLinkedList {
             }
         } else {
             currentNode = this.tail;
-            for (let i=0; i<this.length-index-1; i++){
+            for (let i=this.length-1; i>index; i--){
                 currentNode = currentNode.prev;
                 if (index === i){
                     break
