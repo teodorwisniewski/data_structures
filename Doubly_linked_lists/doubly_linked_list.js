@@ -66,6 +66,25 @@ class DoublyLinkedList {
         return this;
     }
 
+    //pop_first
+    shift(){
+        if(!this.head){
+            return undefined
+        }
+        let nodeToPop = this.head;
+        if (this.head === this.tail){
+            this.head = null;
+            this.tail = null;
+        } else{
+            this.head = nodeToPop.next;
+            this.head.prev = null;
+            nodeToPop.next = null;
+        }
+        this.length--;
+        return nodeToPop
+
+    }
+
     printList() {
         console.log("Printing all nodes in the doubly linked list");
         if (!this.head){
@@ -101,15 +120,13 @@ console.log("\n unshift = prepend nodes to the list \n");
 doublyLinkedList.unshift(9999).unshift(888).unshift(55).unshift(1);
 doublyLinkedList.printList();
 
-// console.log("\n shift = pop first nodes to the list \n");
-// doublyLinkedList.shift();
-// doublyLinkedList.printList();
-// doublyLinkedList.shift();
-// doublyLinkedList.shift();
-// doublyLinkedList.printList();
-// doublyLinkedList.shift();
-// doublyLinkedList.shift();
-// doublyLinkedList.printList();
+console.log("\n shift = pop first nodes to the list \n");
+console.log(`shift the fillowing node: ${doublyLinkedList.shift().value} `);
+console.log(`shift the fillowing node: ${doublyLinkedList.shift().value} `);
+console.log(`shift the fillowing node: ${doublyLinkedList.shift().value} `);
+console.log(`shift the fillowing node: ${doublyLinkedList.shift().value} `);
+console.log(`shift the fillowing node: ${doublyLinkedList.shift()} `);
+doublyLinkedList.printList();
 
 // console.log("\n get = get nodes from the list \n");
 // doublyLinkedList.push(1).push(6).push(11).push(230);
