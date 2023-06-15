@@ -81,8 +81,33 @@ class DoublyLinkedList {
             nodeToPop.next = null;
         }
         this.length--;
-        return nodeToPop
+        return nodeToPop;
+    }
 
+    get(index){
+        if (index < 0 || index >= this.length){
+            return undefined
+        }
+        let middle_index = Math.floor(this.length / 2);
+        let currentNode;
+        if (index < middle_index){
+            currentNode = this.head;
+            for (let i=0; i<index; i++){
+                currentNode = currentNode.next;
+                if (index === i){
+                    break
+                }
+            }
+        } else {
+            currentNode = this.tail;
+            for (let i=0; i<this.length-index-1; i++){
+                currentNode = currentNode.prev;
+                if (index === i){
+                    break
+                }
+            }
+        }
+        return currentNode;
     }
 
     printList() {
@@ -128,14 +153,15 @@ console.log(`shift the fillowing node: ${doublyLinkedList.shift().value} `);
 console.log(`shift the fillowing node: ${doublyLinkedList.shift()} `);
 doublyLinkedList.printList();
 
-// console.log("\n get = get nodes from the list \n");
-// doublyLinkedList.push(1).push(6).push(11).push(230);
-// console.log(`GEtting the fillowing node: ${doublyLinkedList.get(0).value} `);
-// console.log(`GEtting the fillowing node: ${doublyLinkedList.get(1).value} `);
-// console.log(`GEtting the fillowing node: ${doublyLinkedList.get(3).value} `);
-// console.log(`GEtting the fillowing node: ${doublyLinkedList.get(4)} `);
-// console.log(`GEtting the fillowing node: ${doublyLinkedList.get(-3)} `);
-// doublyLinkedList.printList();
+console.log("\n get = get nodes from the list \n");
+doublyLinkedList.push(1).push(6).push(11).push(230);
+console.log(`GEtting the fillowing 0 node: ${doublyLinkedList.get(0).value} `);
+console.log(`GEtting the fillowing 1 node: ${doublyLinkedList.get(1).value} `);
+console.log(`GEtting the fillowing 2 node: ${doublyLinkedList.get(2).value} `);
+console.log(`GEtting the fillowing 3 node: ${doublyLinkedList.get(3).value} `);
+console.log(`GEtting the fillowing 4 node: ${doublyLinkedList.get(4)} `);
+console.log(`GEtting the fillowing node: ${doublyLinkedList.get(-3)} `);
+doublyLinkedList.printList();
 
 
 // console.log("\n set = set nodes from the list \n");
