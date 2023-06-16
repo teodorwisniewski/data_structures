@@ -110,6 +110,16 @@ class DoublyLinkedList {
         return currentNode;
     }
 
+    set(index, value){
+        let nodeToModify = this.get(index);
+        if (nodeToModify){
+            nodeToModify.value = value;
+            return true
+        }
+        return false
+    }
+
+
     printList() {
         console.log("Printing all nodes in the doubly linked list");
         if (!this.head){
@@ -164,14 +174,14 @@ console.log(`GEtting the fillowing node: ${doublyLinkedList.get(-3)} `);
 doublyLinkedList.printList();
 
 
-// console.log("\n set = set nodes from the list \n");
-// doublyLinkedList.set(0, 0);
-// doublyLinkedList.set(1, 100);
-// doublyLinkedList.set(2, 2000);
-// doublyLinkedList.set(3, 30000);
-// doublyLinkedList.set(4, 4423);
-// doublyLinkedList.set(-3, 435);
-// doublyLinkedList.printList();
+console.log("\n set = set nodes from the list \n");
+doublyLinkedList.set(0, 0);
+doublyLinkedList.set(1, 100);
+doublyLinkedList.set(2, 2000);
+doublyLinkedList.set(3, 30000);
+doublyLinkedList.set(4, 4423);
+doublyLinkedList.set(-3, 435);
+doublyLinkedList.printList();
 
 
 // console.log("\n insert nodes from the list \n");
