@@ -118,7 +118,27 @@ class DoublyLinkedList {
         }
         return false
     }
-
+    
+    insert(index, value){
+        if (index<0 || index>this.length){
+            return false;
+        }
+        if (index === 0){
+            return this.unshift(value);
+        }else if (index===this.length){
+            return this.push(value);
+        } else{
+            let after = this.get(index);
+            let before = after.prev;
+            let newNode = new Node(value);
+            newNode.next = after;
+            newNode.prev = before;
+            before.next = newNode;
+            after.prev = newNode;
+        }
+        this.length++;
+        return true;
+    }
 
     printList() {
         console.log("Printing all nodes in the doubly linked list");
@@ -184,14 +204,14 @@ doublyLinkedList.set(-3, 435);
 doublyLinkedList.printList();
 
 
-// console.log("\n insert nodes from the list \n");
-// doublyLinkedList.insert(0, 0.00001);
-// doublyLinkedList.insert(1, 101);
-// doublyLinkedList.insert(2, 2002);
-// doublyLinkedList.insert(4, 404);
-// doublyLinkedList.insert(8, 808);
-// doublyLinkedList.insert(10, 2002);
-// doublyLinkedList.printList();
+console.log("\n insert nodes from the list \n");
+doublyLinkedList.insert(0, 0.00001);
+doublyLinkedList.insert(1, 101);
+doublyLinkedList.insert(2, 2002);
+doublyLinkedList.insert(4, 404);
+doublyLinkedList.insert(8, 808);
+doublyLinkedList.insert(10, 2002);
+doublyLinkedList.printList();
 
 
 // console.log("\n remove nodes from the list \n");
