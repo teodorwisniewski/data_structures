@@ -140,6 +140,28 @@ class DoublyLinkedList {
         return true;
     }
 
+
+    remove(index){
+        if (index < 0 || index>=this.length){
+            return undefined;
+        }
+        if (index === 0){
+            return this.shift(index);
+        }else if (index===this.length-1){
+            return this.pop(index);
+        }
+        let nodeToRemove= this.get(index);
+        
+        nodeToRemove.prev.next = nodeToRemove.next;
+        nodeToRemove.next.prev = nodeToRemove.prev;
+        nodeToRemove.next = null;
+        nodeToRemove.prev = null;
+        this.length--;
+        return nodeToRemove;
+        
+
+    }
+
     printList() {
         console.log("Printing all nodes in the doubly linked list");
         if (!this.head){
@@ -214,16 +236,14 @@ doublyLinkedList.insert(10, 2002);
 doublyLinkedList.printList();
 
 
-// console.log("\n remove nodes from the list \n");
-// console.log(`remove the fillowing node: ${doublyLinkedList.remove(0).value} `);
-// console.log(`remove the fillowing node: ${doublyLinkedList.remove(8)} `);
-// console.log(`remove the fillowing node: ${doublyLinkedList.remove(7).value} `);
-// console.log(`remove the fillowing node: ${doublyLinkedList.remove(2).value} `);
-// console.log(`remove the fillowing node: ${doublyLinkedList.remove(4).value} `);
-// console.log(`remove the fillowing node: ${doublyLinkedList.remove(3).value} `);
-// doublyLinkedList.set(2, 303);
-// doublyLinkedList.set(3, 404);
-// doublyLinkedList.printList();
+console.log("\n remove nodes from the list \n");
+console.log(`remove the fillowing node: ${doublyLinkedList.remove(0).value} `);
+console.log(`remove the fillowing node: ${doublyLinkedList.remove(8)} `);
+console.log(`remove the fillowing node: ${doublyLinkedList.remove(7).value} `);
+console.log(`remove the fillowing node: ${doublyLinkedList.remove(2).value} `);
+console.log(`remove the fillowing node: ${doublyLinkedList.remove(4).value} `);
+console.log(`remove the fillowing node: ${doublyLinkedList.remove(3).value} `);
+doublyLinkedList.printList();
 
 
 // console.log("\n reversing the list \n");
