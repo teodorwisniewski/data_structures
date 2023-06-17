@@ -28,7 +28,7 @@ function printLinkedList(head) {
     console.log(`The linked list has : ${count} nodes. \n\n`);
 };
 
-
+// TC O(n+m) SC O(n)
 function mergingLinkedLists(linkedListOne, linkedListTwo) {
     setOneNodes = new Set();
     currentListOne = linkedListOne;
