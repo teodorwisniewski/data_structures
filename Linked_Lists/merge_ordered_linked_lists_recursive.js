@@ -62,23 +62,23 @@ function mergeLinkedLists(headOne, headTwo) {
   }
 
   function recursiveMerge(p1, p2, before){
-    if (p1 && p2){
-        if (p1.value < p2.value){
-            recursiveMerge(p1.next, p2, p1);
-        } else{
-            if (before){
-                before.next = p2;
-            }
-            before = p2;
-            p2 = p2.next;
-            before.next = p1;
-            recursiveMerge(p1, p2, before);
-        } 
-    }
-        
     if (!p1){
         before.next = p2;
+        return;
+    } else if(!p2){
+        return;
     }
+    if (p1.value < p2.value){
+        recursiveMerge(p1.next, p2, p1);
+    } else{
+        if (before){
+            before.next = p2;
+        }
+        before = p2;
+        p2 = p2.next;
+        before.next = p1;
+        recursiveMerge(p1, p2, before);
+    }    
 
   }
 
