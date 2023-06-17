@@ -41,7 +41,7 @@ function getLength(linkedList){
 
 
 
-// TC  SC 
+// TC O(n+m)  SC O(1)
 function mergingLinkedLists(linkedListOne, linkedListTwo) {
     
     let lengthOne = getLength(linkedListOne);
