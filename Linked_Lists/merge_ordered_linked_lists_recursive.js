@@ -40,7 +40,7 @@ function getLength(linkedList){
 }
 
 
-// TC O(m+n) SC O(1)
+// TC O(m+n) SC O(n+m)
 function mergeLinkedLists(headOne, headTwo) {
     if (!headOne){
         return headTwo;
