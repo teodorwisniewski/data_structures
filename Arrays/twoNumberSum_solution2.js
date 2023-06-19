@@ -2,19 +2,18 @@
 
 
 
-// TC O(n^2) | SC O(1)
+// TC O(n) SC O(n)
 function twoNumberSum(array, targetSum) {
+    let nums = {};
     for (let num of array){
-        for (let num2 of array){
-            if(num===num2){
-                continue;
-            }
-            sumOfTwoElements = num + num2;
-            if(sumOfTwoElements===targetSum){
-                return [num, num2];
-            }
+        let potentialMatch = targetSum - num;
+        if (potentialMatch in nums){
+            return [potentialMatch, num]
+        } else{
+            nums[num] = true
         }
     }
+
     return [];
 }
 
@@ -26,7 +25,7 @@ function twoNumberSum(array, targetSum) {
  console.log(output)
 
  inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
- targetSum = 2
+ targetSum = 10
 
  output = twoNumberSum(inputs, targetSum);
  console.log(output)
