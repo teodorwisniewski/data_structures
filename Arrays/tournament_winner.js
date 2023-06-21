@@ -3,7 +3,6 @@
 const HOME_TEAM_WIN = 1;
 
 function updateScores(winningTable, winningTeam){
-
     if (winningTeam in winningTable){
         winningTable[winningTeam] += 3;
     }else{
@@ -12,7 +11,7 @@ function updateScores(winningTable, winningTeam){
     return winningTable
 }
 
-// TC O(N) | SC O(N)
+// TC O(N) N-number of comptetions | SC O(k) k - number of teams
 function tournamentWinner(competitions, results) {
     let resPlayerPoints = {};
     let tourWinner = ''
