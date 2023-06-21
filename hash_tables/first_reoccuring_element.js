@@ -1,10 +1,12 @@
 
+
+// TC O(n) SC O(n)
 function firstRecurringCharacter(input) {
   const recurringChar = {}
   
   for (let i = 0; i < input.length; i++) {
     el = input[i];
-    if (el in recurringChar){
+    if (recurringChar[el]){
         return el;
     }
     recurringChar[el] = true
