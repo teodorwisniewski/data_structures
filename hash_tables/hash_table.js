@@ -39,19 +39,27 @@ class HashTable{
     }
 
     // O(n) - worse for traversing than arrays or lists
-    keys(){
-        let keysArray = [];
-        for (let i=0; i< this.data.length; i++){
-            if(this.data[i]){
-                let retrievedKey = this.data[i][0][0];
-                // if (this.data[i].length > 1){
-
-                // }
-                keysArray.push(retrievedKey);
+    keys() {
+        if (!this.data.length) {
+          return undefined
+        }
+        let result = []
+        // loop through all the elements
+        for (let i = 0; i < this.data.length; i++) {
+            // if it's not an empty memory cell
+            if (this.data[i] && this.data[i].length) {
+              // but also loop through all the potential collisions
+              if (this.data.length > 1) {
+                for (let j = 0; j < this.data[i].length; j++) {
+                  result.push(this.data[i][j][0])
+                }
+              } else {
+                result.push(this.data[i][0])
+              } 
             }
         }
-        return keysArray
-    }
+        return result; 
+      }
 
 
 }
