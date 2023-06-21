@@ -1,4 +1,17 @@
 
+
+const HOME_TEAM_WIN = 1;
+
+function updateScores(winningTable, winningTeam){
+
+    if (winningTeam in winningTable){
+        winningTable[winningTeam] += 3;
+    }else{
+        winningTable[winningTeam] = 3;
+    }
+    return winningTable
+}
+
 // TC O(N) | SC O(N)
 function tournamentWinner(competitions, results) {
     let resPlayerPoints = {};
@@ -9,18 +22,14 @@ function tournamentWinner(competitions, results) {
         let comp = competitions[i];
         let res = results[i];
         let winner;
-        if (res == 1){
+        if (res == HOME_TEAM_WIN){
             // home winner
             winner = comp[0];
         }else{
             // away win
             winner = comp[1];
         }
-        if (winner in resPlayerPoints){
-            resPlayerPoints[winner] += 3;
-        }else{
-            resPlayerPoints[winner] = 3;
-        }
+        resPlayerPoints = updateScores(resPlayerPoints, winner);
         if (resPlayerPoints[winner] > pointsMax){
             pointsMax = resPlayerPoints[winner];
             tourWinner = winner;
