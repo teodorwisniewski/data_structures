@@ -38,7 +38,7 @@ class HashTable{
         }
     }
 
-    // O(n) - worse for traversing than arrays or lists
+    // O(n^2) - worse for traversing than arrays or lists
     keys() {
         if (!this.data.length) {
           return undefined
