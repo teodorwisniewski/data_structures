@@ -18,11 +18,10 @@ class HashTable{
         let address = this._hash(key);
         console.log(`The hash function has returned ${address} address`)
         if (!this.data[address]){
-            this.data[address] = [[key, value]];
-        } else
-        {
-            this.data[address].push([key, value]);
-        }
+            this.data[address] = [];
+        } 
+        this.data[address].push([key, value]);
+        
     }
 
     // O(1) without collisions, O(n) with collisions
@@ -38,6 +37,23 @@ class HashTable{
             }
         }
     }
+
+    // O(n) - worse for traversing than arrays or lists
+    keys(){
+        let keysArray = [];
+        for (let i=0; i< this.data.length; i++){
+            if(this.data[i]){
+                let retrievedKey = this.data[i][0][0];
+                // if (this.data[i].length > 1){
+
+                // }
+                keysArray.push(retrievedKey);
+            }
+        }
+        return keysArray
+    }
+
+
 }
 
 
@@ -57,3 +73,5 @@ console.log(h.get(4));
 console.log(h.get("foo"));
 console.log("testing hash function");
 console.log(h._hash("Teodor"));
+console.log("priting keys");
+console.log(h.keys())
