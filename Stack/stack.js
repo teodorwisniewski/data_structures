@@ -30,6 +30,17 @@ class Stack{
         return this
     }
 
+    pop(){
+        if (this.heigth==0){
+            return undefined;
+        } 
+        let nodeToPop = this.top;
+        this.top = nodeToPop.next;
+        nodeToPop.next = null;
+        this.heigth--;
+        return nodeToPop
+    }
+
     display_stack(){
         if (this.heigth==0){
             console.log("\n The stack is empty");
@@ -53,4 +64,13 @@ myStack.push(13);
 myStack.push(14).push(15);
 console.log("The stack file");
 console.log(myStack);
-myStack.display_stack()
+myStack.display_stack();
+console.log("\nPoping elements from the stack");
+console.log(myStack.pop());
+console.log(myStack.pop());
+console.log(myStack.pop());
+myStack.display_stack();
+console.log(myStack.pop());
+console.log(myStack.pop());
+console.log(myStack.pop());
+myStack.display_stack();
