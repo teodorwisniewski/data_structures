@@ -31,11 +31,9 @@ class Stack{
     }
 
     pop(){
-        if (this.heigth==0){
-            return undefined;
-        } 
+        if (this.heigth === 0) return undefined;
         let nodeToPop = this.top;
-        this.top = nodeToPop.next;
+        this.top = this.top.next;
         nodeToPop.next = null;
         this.heigth--;
         return nodeToPop
