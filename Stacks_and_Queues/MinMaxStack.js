@@ -1,6 +1,6 @@
-// Feel free to add new properties and methods to the class.
 
-// O(3N)
+
+// O(3N) = O(N)
 class MinMaxStack {
     constructor(){
       this.minMaxData = [];
