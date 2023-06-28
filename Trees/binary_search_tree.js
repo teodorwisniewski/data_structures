@@ -42,13 +42,6 @@ class BST{
         }
     }
 
-    // traverseAndPrint(node = this.root){
-    //     if (node !== null){
-    //         this.traverseAndPrint(node.left);
-    //         console.log(node.value);
-    //         this.traverseAndPrint(node.right);
-    //     }
-    // }
     traverseAndPrint() {
         let level = 0;
         let queue = [{node: this.root, level: 0}];
@@ -57,7 +50,6 @@ class BST{
         while(queue.length > 0) {
             let item = queue.shift();
             let node = item.node;
-
 
             if(item.level > level) {
                 console.log(output);
@@ -75,6 +67,25 @@ class BST{
         }
         console.log(output);
     }
+
+    contains(value){
+        if (this.root === null){
+            return false;
+        }
+        let temp = this.root
+        while(temp){
+            if (temp.value > value){
+                temp = temp.left;
+            } else if (temp.value < value){
+                temp = temp.right;
+            } else {
+                return true
+            }
+        }
+        return false
+    }
+
+
 }
 
 
@@ -88,3 +99,9 @@ myTree.insert(18);
 myTree.insert(27);
 
 myTree.traverseAndPrint();
+
+console.log(`Checking for the existance node 21 => ${myTree.contains(21)}`)
+console.log(`Checking for the existance node 18 => ${myTree.contains(18)}`)
+console.log(`Checking for the existance node 23 => ${myTree.contains(23)}`)
+console.log(`Checking for the existance node 88 => ${myTree.contains(88)}`)
+console.log(`Checking for the existance node 27 => ${myTree.contains(27)}`)
