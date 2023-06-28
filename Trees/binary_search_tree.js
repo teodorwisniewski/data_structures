@@ -87,12 +87,12 @@ class BST{
 
 
     // TC O(log(n))
-    findMinimumNode(){
+    findMinimumNode(node){
         if (this.root === null){
             return undefined;
         }
-        let temp = this.root
-        let mimimumValue = temp.value
+        let temp = node;
+        let mimimumValue = temp.value;
         while(temp){
             mimimumValue = temp.value;
             temp = temp.left;
@@ -122,4 +122,4 @@ console.log(`Checking for the existance node 88 => ${myTree.contains(88)}`)
 console.log(`Checking for the existance node 27 => ${myTree.contains(27)}`)
 
 console.log(`\n Find mimimum`)
-console.log(`The minimum node is => ${myTree.findMinimumNode()}`)
+console.log(`The minimum node is => ${myTree.findMinimumNode(myTree.root.right)}`)
