@@ -1,5 +1,5 @@
 
-
+from typing import List
 
 
 class TrieNode:
@@ -32,7 +32,7 @@ class Trie:
         curr_node.children["*"] = None
         return curr_node
 
-    def collect_words(self, words=None, node=None, word=""):
+    def collect_words(self, words=None, node=None, word="") -> List[str]:
         if words is None:
             words = []
         node = node or self.root
@@ -50,6 +50,12 @@ class Trie:
                 print(f"I found a word: {word}!")
             else:
                 self.traverse_trie(child_node, word + letter)
+
+    def autocomplete(self, prefix) -> List[str]:
+        curr_node = self.search(prefix)
+        if curr_node is None:
+            return None
+        return self.collect_words(node=curr_node, word=prefix)
 
 
 
@@ -70,3 +76,9 @@ for word in words_to_insert:
 my_trie.traverse_trie()
 
 print(f"I found the following words {my_trie.collect_words()}")
+
+prefix = "ca"
+print(f"For the following prefix '{prefix}' I found the following words: {my_trie.autocomplete(prefix)}")
+prefix = "ac"
+print(f"For the following prefix '{prefix}' I found the following words: {my_trie.autocomplete(prefix)}")
+
